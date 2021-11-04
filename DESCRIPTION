@@ -1,6 +1,6 @@
 Package: shinyGovstyle
 Title: Custom Gov Style Inputs for Shiny
-Version: 0.0.6
+Version: 0.0.7
 Authors@R: person(
   given = "Ross", 
   family = "Wyatt", 
@@ -18,8 +18,8 @@ BugReports: https://github.com/moj-analytical-services/shinyGovstyle/issues
 Imports: shiny (>= 0.14), htmltools, shinyjs, jsonlite
 Suggests: testthat
 NeedsCompilation: no
-Packaged: 2021-10-21 17:18:13 UTC; rosswyatt
+Packaged: 2021-11-04 18:34:30 UTC; rosswyatt
 Author: Ross Wyatt [aut, cre]
 Maintainer: Ross Wyatt <ross.wyatt@justice.gov.uk>
 Repository: CRAN
-Date/Publication: 2021-10-25 07:30:09 UTC
+Date/Publication: 2021-11-04 18:50:03 UTC

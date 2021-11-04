@@ -3,6 +3,9 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-decoration: underline;
+    border: none;
+    background: none;
+    color: #1d70b8;
 }
 @media print {
     .govuk-link {
@@ -1221,6 +1224,9 @@
     margin-top: 15px;
     margin-bottom: 15px;
     padding-left: 14px;
+    border: none;
+    background: white;
+    color: #0b0c0c;
 }
 @media (min-width: 40.0625em) {
     .govuk-back-link {
@@ -3294,8 +3300,6 @@
     vertical-align: top;
 }
 .govuk-header__logotype-crown-fallback-image {
-    width: 36px;
-    height: 32px;
     border: 0;
     vertical-align: bottom;
 }
