@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>Headings and text</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+
+<style type="text/css">
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
+</style>
+<style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Headings and text</h1>
+
+
+
+<div id="overview" class="section level2">
+<h2>Overview</h2>
+<p>This vignette covers all functions in shinyGovstyle that produce
+styled text content: headings, body text, lists, callout components,
+links, and typography. For page structure and layout, see the <a href="layout-options.html">Layout options</a> vignette.</p>
+<hr />
+</div>
+<div id="heading_text" class="section level2">
+<h2><code>heading_text()</code></h2>
+<p>Creates a semantic HTML heading element with a GOV.UK heading CSS
+class.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">heading_text</span>(<span class="st">&quot;Summary&quot;</span>, <span class="at">size =</span> <span class="st">&quot;l&quot;</span>, <span class="at">level =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div id="arguments" class="section level3">
+<h3>Arguments</h3>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Argument</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>text_input</code></td>
+<td>—</td>
+<td>The heading text to display</td>
+</tr>
+<tr class="even">
+<td><code>size</code></td>
+<td><code>&quot;xl&quot;</code></td>
+<td>Visual size: <code>&quot;xl&quot;</code>, <code>&quot;l&quot;</code>, <code>&quot;m&quot;</code>,
+or <code>&quot;s&quot;</code></td>
+</tr>
+<tr class="odd">
+<td><code>level</code></td>
+<td><code>1</code></td>
+<td>HTML heading level: integer 1–6</td>
+</tr>
+<tr class="even">
+<td><code>id</code></td>
+<td>auto</td>
+<td>Element ID — auto-generated from <code>text_input</code> if
+omitted</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="visual-size-and-semantic-level-are-independent" class="section level3">
+<h3>Visual size and semantic level are independent</h3>
+<p><code>size</code> controls the CSS class applied
+(<code>govuk-heading-xl</code>, <code>govuk-heading-l</code>, etc.),
+which determines how the heading looks. <code>level</code> controls the
+HTML element used (<code>&lt;h1&gt;</code>, <code>&lt;h2&gt;</code>,
+etc.), which determines its position in the document outline read by
+screen readers and assistive technologies.</p>
+<p>These are independent because it is occasionally necessary to use a
+smaller visual heading at a higher semantic level, or vice versa. For
+example, a page where the first visible heading needs to be modest in
+size but is still structurally the <code>&lt;h1&gt;</code>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">heading_text</span>(<span class="st">&quot;User guide&quot;</span>, <span class="at">size =</span> <span class="st">&quot;m&quot;</span>, <span class="at">level =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p>Always set both arguments deliberately. Do not leave
+<code>level</code> at its default of <code>1</code> for every heading on
+a page.</p>
+</div>
+<div id="recommended-sizelevel-pairings" class="section level3">
+<h3>Recommended size–level pairings</h3>
+<p><strong>Standard pages</strong> (most dashboards and data tools):</p>
+<table>
+<thead>
+<tr class="header">
+<th>Heading role</th>
+<th><code>size</code></th>
+<th><code>level</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Page title</td>
+<td><code>&quot;l&quot;</code></td>
+<td><code>1</code></td>
+</tr>
+<tr class="even">
+<td>Section heading</td>
+<td><code>&quot;m&quot;</code></td>
+<td><code>2</code></td>
+</tr>
+<tr class="odd">
+<td>Sub-section heading</td>
+<td><code>&quot;s&quot;</code></td>
+<td><code>3</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Long-form content</strong> (user guides, methodology,
+accessibility statements):</p>
+<table>
+<thead>
+<tr class="header">
+<th>Heading role</th>
+<th><code>size</code></th>
+<th><code>level</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Page title</td>
+<td><code>&quot;xl&quot;</code></td>
+<td><code>1</code></td>
+</tr>
+<tr class="even">
+<td>Section heading</td>
+<td><code>&quot;l&quot;</code></td>
+<td><code>2</code></td>
+</tr>
+<tr class="odd">
+<td>Sub-section heading</td>
+<td><code>&quot;m&quot;</code></td>
+<td><code>3</code></td>
+</tr>
+<tr class="even">
+<td>Sub-sub-section heading</td>
+<td><code>&quot;s&quot;</code></td>
+<td><code>4</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="accessibility" class="section level3">
+<h3>Accessibility</h3>
+<p><strong>Do not skip heading levels.</strong> Moving from an
+<code>&lt;h1&gt;</code> straight to an <code>&lt;h3&gt;</code> breaks
+the document outline and makes it harder for screen reader users to
+navigate, as they commonly jump between headings to scan a page. This is
+a requirement under <a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships">WCAG
+2.2 success criterion 1.3.1: Info and Relationships</a>.</p>
+<p><strong>Write headings in sentence case.</strong> Only capitalise the
+first word and proper nouns.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># Correct — sentence case</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">heading_text</span>(<span class="st">&quot;Summary of findings&quot;</span>, <span class="at">size =</span> <span class="st">&quot;l&quot;</span>, <span class="at">level =</span> <span class="dv">1</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="co"># Incorrect — title case</span></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="fu">heading_text</span>(<span class="st">&quot;Summary Of Findings&quot;</span>, <span class="at">size =</span> <span class="st">&quot;l&quot;</span>, <span class="at">level =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p>For more information, read the <a href="https://design-system.service.gov.uk/styles/headings/">GOV.UK
+headings guidance</a>.</p>
+</div>
+<div id="heading-ids" class="section level3">
+<h3>Heading IDs</h3>
+<p>If <code>id</code> is not supplied it is auto-generated by
+lowercasing <code>text_input</code> and replacing non-alphanumeric
+characters with underscores. Supply an explicit <code>id</code> when you
+need a stable anchor to link to, or when two headings would otherwise
+generate the same ID:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">heading_text</span>(<span class="st">&quot;Methodology&quot;</span>, <span class="at">size =</span> <span class="st">&quot;l&quot;</span>, <span class="at">level =</span> <span class="dv">2</span>, <span class="at">id =</span> <span class="st">&quot;methodology&quot;</span>)</span></code></pre></div>
+<hr />
+</div>
+</div>
+<div id="gov_text" class="section level2">
+<h2><code>gov_text()</code></h2>
+<p>A wrapper that produces a <code>&lt;p class=&quot;govuk-body&quot;&gt;</code>
+paragraph element. Use it when you want to add body text with correct
+GOV.UK styling without writing raw tag calls.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">gov_box</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>  <span class="at">size =</span> <span class="st">&quot;two-thirds&quot;</span>,</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>  <span class="fu">gov_text</span>(<span class="st">&quot;This is a paragraph of body text.&quot;</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>)</span></code></pre></div>
+<hr />
+</div>
+<div id="gov_list" class="section level2">
+<h2><code>gov_list()</code></h2>
+<p>Creates a GOV.UK-styled list. The <code>style</code> argument
+controls both the HTML element used and the visual presentation:</p>
+<table>
+<thead>
+<tr class="header">
+<th><code>style</code></th>
+<th>HTML element</th>
+<th>Appearance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>&quot;none&quot;</code> (default)</td>
+<td><code>&lt;ul&gt;</code></td>
+<td>Plain, no markers</td>
+</tr>
+<tr class="even">
+<td><code>&quot;bullet&quot;</code></td>
+<td><code>&lt;ul&gt;</code></td>
+<td>Bulleted list</td>
+</tr>
+<tr class="odd">
+<td><code>&quot;number&quot;</code></td>
+<td><code>&lt;ol&gt;</code></td>
+<td>Numbered list</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">gov_list</span>(<span class="fu">c</span>(<span class="st">&quot;First item&quot;</span>, <span class="st">&quot;Second item&quot;</span>, <span class="st">&quot;Third item&quot;</span>), <span class="at">style =</span> <span class="st">&quot;bullet&quot;</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="fu">gov_list</span>(<span class="fu">c</span>(<span class="st">&quot;First step&quot;</span>, <span class="st">&quot;Second step&quot;</span>, <span class="st">&quot;Third step&quot;</span>), <span class="at">style =</span> <span class="st">&quot;number&quot;</span>)</span></code></pre></div>
+<p>Use <code>style = &quot;number&quot;</code> when order matters — steps in a
+process, ranked results, or sequential instructions. Use
+<code>style = &quot;bullet&quot;</code> for unordered items. The plain style
+(<code>&quot;none&quot;</code>) is useful when you want list semantics for screen
+readers without a visual marker.</p>
+<p>For more information, read the <a href="https://design-system.service.gov.uk/styles/lists/">GOV.UK lists
+guidance</a>.</p>
+<hr />
+</div>
+<div id="insert_text" class="section level2">
+<h2><code>insert_text()</code></h2>
+<p>Displays a GOV.UK inset text box — a bordered callout for
+supplementary information that is related to, but not the main focus of,
+the surrounding content.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">insert_text</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>  <span class="at">inputId =</span> <span class="st">&quot;processing-note&quot;</span>,</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>  <span class="at">text =</span> <span class="st">&quot;It can take up to 8 weeks to process your application.&quot;</span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>)</span></code></pre></div>
+<p>Use inset text for information the user needs to know but that is not
+the primary action or decision on the page — for example, a processing
+time, an exception to a rule, or a clarification. Do not use it for
+warnings about consequences; use <code>warning_text()</code>
+instead.</p>
+<p>For more information, read the <a href="https://design-system.service.gov.uk/components/inset-text/">GOV.UK
+inset text guidance</a>.</p>
+<hr />
+</div>
+<div id="warning_text" class="section level2">
+<h2><code>warning_text()</code></h2>
+<p>Displays a GOV.UK warning text component: a bold statement with a
+prominent “!” icon, used to warn users about something with serious
+consequences.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">warning_text</span>(</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>  <span class="at">inputId =</span> <span class="st">&quot;fine-warning&quot;</span>,</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>  <span class="at">text =</span> <span class="st">&quot;You can be fined up to £5,000 if you do not register.&quot;</span></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>)</span></code></pre></div>
+<p>The “!” icon carries <code>aria-hidden = &quot;true&quot;</code> and the word
+“Warning” is prepended as visually hidden text, so screen readers
+announce “Warning: [your text]” without reading out the icon character.
+Given this, you should avoid starting the text with ‘Warning’, else
+you’ll submit users to ‘Warning Warning’.</p>
+<p>Use <code>warning_text()</code> when the consequence of missing the
+information is serious. For less critical supplementary information, use
+<code>insert_text()</code> instead.</p>
+<p>For more information, read the <a href="https://design-system.service.gov.uk/components/warning-text/">GOV.UK
+warning text guidance</a>.</p>
+<hr />
+</div>
+<div id="noti_banner" class="section level2">
+<h2><code>noti_banner()</code></h2>
+<p>Displays a GOV.UK notification banner for information that is not
+directly related to the current page content — such as a service-wide
+problem, an upcoming deadline, or the outcome of a previous action.</p>
+<div id="two-types" class="section level3">
+<h3>Two types</h3>
+<p><strong>Standard</strong> (default, blue): for neutral information
+such as service problems or upcoming events.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">noti_banner</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>  <span class="at">inputId =</span> <span class="st">&quot;service-notice&quot;</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>  <span class="at">title_txt =</span> <span class="st">&quot;Important&quot;</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>  <span class="at">body_txt =</span> <span class="fu">paste0</span>(</span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>    <span class="st">&quot;This service will be unavailable on Saturday &quot;</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a>    <span class="st">&quot;14 June from 8am to 6pm.&quot;</span></span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a>  )</span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a>)</span></code></pre></div>
+<p><strong>Success</strong> (green): to confirm that a previous action
+completed successfully. Uses <code>role=&quot;alert&quot;</code> so screen readers
+announce it automatically on page load.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">noti_banner</span>(</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>  <span class="at">inputId =</span> <span class="st">&quot;submission-confirm&quot;</span>,</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>  <span class="at">title_txt =</span> <span class="st">&quot;Success&quot;</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>  <span class="at">body_txt =</span> <span class="st">&quot;Your report has been submitted.&quot;</span>,</span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;success&quot;</span></span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+<div id="when-to-use-each-component" class="section level3">
+<h3>When to use each component</h3>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Situation</th>
+<th>Component</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Information not related to the current page task</td>
+<td><code>noti_banner()</code></td>
+</tr>
+<tr class="even">
+<td>Supplementary information related to the page</td>
+<td><code>insert_text()</code></td>
+</tr>
+<tr class="odd">
+<td>Serious consequences if the user misses information</td>
+<td><code>warning_text()</code></td>
+</tr>
+<tr class="even">
+<td>Form validation errors</td>
+<td><code>error_summary()</code> / error messages</td>
+</tr>
+</tbody>
+</table>
+<p>Use notification banners sparingly — users often overlook them when
+they appear frequently. Show only one at a time, and never alongside an
+error summary.</p>
+<p>For more information, read the <a href="https://design-system.service.gov.uk/components/notification-banner/">GOV.UK
+notification banner guidance</a>.</p>
+<hr />
+</div>
+</div>
+<div id="external_link" class="section level2">
+<h2><code>external_link()</code></h2>
+<p>A wrapper for HTML anchor elements that produces safe, accessible
+external links with consistent behaviour.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">external_link</span>(<span class="st">&quot;https://www.example.gov.uk/guidance&quot;</span>, <span class="st">&quot;Guidance for applicants&quot;</span>)</span></code></pre></div>
+<div id="what-the-function-does-automatically" class="section level3">
+<h3>What the function does automatically</h3>
+<ul>
+<li>Adds <code>target=&quot;_blank&quot;</code> to open the link in a new tab</li>
+<li>Adds <code>rel=&quot;noopener noreferrer&quot;</code> to prevent <a href="https://owasp.org/www-community/attacks/Reverse_Tabnabbing">reverse
+tabnabbing</a></li>
+<li>Appends “(opens in new tab)” to the visible link text by
+default</li>
+<li>Adds a visually hidden “(opens in new tab)” span for screen readers
+when <code>add_warning = FALSE</code></li>
+</ul>
+</div>
+<div id="descriptive-link-text" class="section level3">
+<h3>Descriptive link text</h3>
+<p>The function validates <code>link_text</code> and will error if you
+supply a raw URL as the link text, vague text such as “click here” or
+“here”, or text ending with a full stop. It will also warn if the text
+is fewer than 7 characters.</p>
+<p>This enforces <a href="https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context">WCAG
+2.2 success criterion 2.4.4: Link Purpose (In Context)</a>, which
+requires link text to describe the destination without needing the
+surrounding context to make sense of it.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co"># Correct — descriptive</span></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="fu">external_link</span>(<span class="st">&quot;https://www.example.gov.uk/apply&quot;</span>, <span class="st">&quot;Apply for a licence&quot;</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a><span class="co"># Will error — vague text</span></span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a><span class="fu">external_link</span>(<span class="st">&quot;https://www.example.gov.uk/apply&quot;</span>, <span class="st">&quot;click here&quot;</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a><span class="co"># Will error — raw URL as text</span></span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a><span class="fu">external_link</span>(</span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a>  <span class="st">&quot;https://www.example.gov.uk/apply&quot;</span>,</span>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a>  <span class="st">&quot;https://www.example.gov.uk/apply&quot;</span></span>
+<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+<div id="grouped-links" class="section level3">
+<h3>Grouped links</h3>
+<p>When displaying several external links together, repeating “(opens in
+new tab)” on each is visually repetitive. Set
+<code>add_warning = FALSE</code> and add a single explanatory sentence
+above the group instead:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">gov_text</span>(<span class="st">&quot;The following links open in a new tab.&quot;</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>shiny<span class="sc">::</span>tags<span class="sc">$</span><span class="fu">ul</span>(</span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>  shiny<span class="sc">::</span>tags<span class="sc">$</span><span class="fu">li</span>(</span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>    <span class="fu">external_link</span>(</span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a>      <span class="st">&quot;https://www.example.gov.uk/a&quot;</span>,</span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a>      <span class="st">&quot;Guidance document A&quot;</span>,</span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a>      <span class="at">add_warning =</span> <span class="cn">FALSE</span></span>
+<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a>    )</span>
+<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a>  ),</span>
+<span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a>  shiny<span class="sc">::</span>tags<span class="sc">$</span><span class="fu">li</span>(</span>
+<span id="cb13-11"><a href="#cb13-11" tabindex="-1"></a>    <span class="fu">external_link</span>(</span>
+<span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a>      <span class="st">&quot;https://www.example.gov.uk/b&quot;</span>,</span>
+<span id="cb13-13"><a href="#cb13-13" tabindex="-1"></a>      <span class="st">&quot;Guidance document B&quot;</span>,</span>
+<span id="cb13-14"><a href="#cb13-14" tabindex="-1"></a>      <span class="at">add_warning =</span> <span class="cn">FALSE</span></span>
+<span id="cb13-15"><a href="#cb13-15" tabindex="-1"></a>    )</span>
+<span id="cb13-16"><a href="#cb13-16" tabindex="-1"></a>  )</span>
+<span id="cb13-17"><a href="#cb13-17" tabindex="-1"></a>)</span></code></pre></div>
+<p>For more information, read the <a href="https://design-system.service.gov.uk/styles/links/">GOV.UK links
+guidance</a>.</p>
+<hr />
+</div>
+</div>
+<div id="font" class="section level2">
+<h2><code>font()</code></h2>
+<p>GDS Transport is a restricted typeface and <strong>must only be used
+on GOV.UK domains</strong>. If your app is not hosted on a GOV.UK
+domain, do not call <code>font()</code>. You do not need to do anything
+and your app will default to Arial instead, which is the correct
+behaviour.</p>
+<p>If you are on a GOV.UK domain and therefore want to use the
+<code>font()</code> function, putting it within your UI will load the
+GDS Transport typeface for use in your app. By default the GOV.UK
+Frontend CSS specifies
+<code>font-family: GDS Transport, arial, sans-serif</code> — if the font
+files are not loaded the browser falls back to Arial automatically.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co"># Only include this if your app is on a GOV.UK domain</span></span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="fu">font</span>()</span></code></pre></div>
+<p>For more information on when GDS Transport is permitted, read the <a href="https://design-system.service.gov.uk/styles/typeface/">GOV.UK
+typeface guidance</a>.</p>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>Layout options</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+
+<style type="text/css">
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
+</style>
+<style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Layout options</h1>
+
+
+
+<div id="overview" class="section level2">
+<h2>Overview</h2>
+<p>shinyGovstyle provides a set of layout functions that produce the
+HTML structure GOV.UK Frontend CSS expects. This vignette covers all of
+the layout functions available and explains how they fit together to
+build a complete app.</p>
+<p>The layout functions fall into two groups:</p>
+<ul>
+<li><strong>Page-level components</strong> — <code>header()</code>,
+<code>footer()</code>, <code>banner()</code>,
+<code>cookieBanner()</code>, <code>skip_to_main()</code>, and
+<code>service_navigation()</code> — form the frame of the page that sits
+outside the main content area.</li>
+<li><strong>Content layout functions</strong> —
+<code>gov_main_layout()</code>, <code>gov_row()</code>,
+<code>gov_box()</code>, and <code>gov_layout()</code> — structure
+content within the main content area.</li>
+</ul>
+<hr />
+</div>
+<div id="page-level-components" class="section level2">
+<h2>Page-level components</h2>
+<p>These components form the outer frame of every page. They sit outside
+the main content area and are consistent across all pages of your
+app.</p>
+<pre><code>+-------------------------------------------------------+
+|  skip_to_main()   [visually hidden, keyboard only]    |
++-------------------------------------------------------+
+|  cookieBanner()   [optional]                          |
++-------------------------------------------------------+
+|  header()                                             |
++-------------------------------------------------------+
+|  service_navigation()   [optional, multi-page apps]   |
++-------------------------------------------------------+
+|  banner()   [optional, e.g. Beta or Alpha]            |
++-------------------------------------------------------+
+|                                                       |
+|  gov_main_layout()   ← id = &quot;main&quot;                    |
+|  +--------------------------------------------------+  |
+|  |  your content goes here                         |  |
+|  +--------------------------------------------------+  |
+|                                                       |
++-------------------------------------------------------+
+|  footer()                                             |
++-------------------------------------------------------+</code></pre>
+<div id="skip_to_main" class="section level3">
+<h3><code>skip_to_main()</code></h3>
+<p>Provides a visually hidden “Skip to main content” link that becomes
+visible when focused by a keyboard user. This is an accessibility
+requirement and should always be the first element in your UI, before
+the header.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">skip_to_main</span>()</span></code></pre></div>
+<p>By default it links to <code>#main</code>, which matches the
+<code>id</code> applied by <code>gov_main_layout()</code>. If you change
+the <code>inputID</code> argument of <code>gov_main_layout()</code>,
+pass the same value to <code>skip_to_main()</code>.</p>
+<p>For more information, read the documentation for the <a href="https://design-system.service.gov.uk/components/skip-link/">GOV.UK
+Skip link component</a>.</p>
+</div>
+<div id="cookiebanner" class="section level3">
+<h3><code>cookieBanner()</code></h3>
+<p>Displays a GOV.UK-styled cookie consent banner. It requires
+<code>shinyjs::useShinyjs()</code> to be present in the UI. All element
+IDs within the banner are preset — see <code>?cookieBanner</code> for
+the server-side <code>observeEvent</code> pattern needed to handle
+accept and reject interactions.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>shinyjs<span class="sc">::</span><span class="fu">useShinyjs</span>()</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">cookieBanner</span>(<span class="st">&quot;My service name&quot;</span>)</span></code></pre></div>
+<p>For more information, including when this should be used, read the
+documentation for the <a href="https://design-system.service.gov.uk/components/cookie-banner/">GOV.UK
+Cookie banner component</a>.</p>
+</div>
+<div id="header" class="section level3">
+<h3><code>header()</code></h3>
+<p>Creates a GOV.UK styled header bar, optionally containing your
+department logo, name and service name. This is not the official <a href="https://design-system.service.gov.uk/components/header/">GOV.UK
+header</a>, as that should only be used on GOV.UK domains. If you
+believe you have an R Shiny app on a GOV.UK domain, please <a href="https://github.com/dfe-analytical-services/shinyGovstyle/issues/new/choose">raise
+an issue</a> to request this as an addition to the package.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">header</span>(</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>  <span class="at">org_name =</span> <span class="st">&quot;Department for Education&quot;</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>  <span class="at">service_name =</span> <span class="st">&quot;My dashboard&quot;</span></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+<div id="banner" class="section level3">
+<h3><code>banner()</code></h3>
+<p>Displays a phase banner immediately below the header, used to
+indicate the maturity of your service and give a clear route for users
+to provide feedback.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">banner</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>  <span class="at">inputId =</span> <span class="st">&quot;phase-banner&quot;</span>,</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;Beta&quot;</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>  <span class="at">label =</span> <span class="fu">paste0</span>(</span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>    <span class="st">&quot;This is a new service \u2014 your &quot;</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a>    <span class="st">&#39;&lt;a class=&quot;govuk-link&quot; href=&quot;#&quot;&gt;feedback&lt;/a&gt; will help us to improve it.&#39;</span></span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a>  )</span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a>)</span></code></pre></div>
+<p>For more information on when and how to use this, read the
+documentation for the <a href="https://design-system.service.gov.uk/components/phase-banner/">GOV.UK
+Phase banner component</a>.</p>
+</div>
+<div id="footer" class="section level3">
+<h3><code>footer()</code></h3>
+<p>Creates a GOV.UK styled footer, though like the header, this is not
+an offical version as that should only be used on a GOV.UK domain. Use
+<code>full = TRUE</code> to include the OGL licence logo and Crown
+copyright statement. You can add support links that point either to
+internal hidden tab panels or to external URLs.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># Minimal footer</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="fu">footer</span>()</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="co"># Footer with support links</span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a><span class="fu">footer</span>(</span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>  <span class="at">links =</span> <span class="fu">c</span>(</span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>    <span class="st">`</span><span class="at">Accessibility statement</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;accessibility_footer_link&quot;</span>,</span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a>    <span class="st">`</span><span class="at">Cookies</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;cookies_footer_link&quot;</span></span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a>  )</span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a>)</span></code></pre></div>
+<p>Internal links use auto-generated inputIDs — the link text lowercased
+with non-alphanumeric characters replaced by underscores — that you
+handle with <code>observeEvent()</code> in your server to switch the
+active tab panel.</p>
+<hr />
+</div>
+</div>
+<div id="the-main-content-area" class="section level2">
+<h2>The main content area</h2>
+<p><code>gov_main_layout()</code> produces a
+<code>&lt;div class=&quot;govuk-width-container&quot;&gt;</code> wrapping a
+<code>&lt;main class=&quot;govuk-main-wrapper&quot;&gt;</code>. The outer
+<code>&lt;div&gt;</code> constrains content width; the
+<code>&lt;main&gt;</code> element carries the responsive vertical
+padding. Everything between the page-level components and the footer
+lives inside it.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">gov_main_layout</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>  <span class="co"># your content here</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>)</span></code></pre></div>
+<p>The <code>id</code> (default <code>&quot;main&quot;</code>) is applied directly
+to the <code>&lt;main&gt;</code> element, which is the correct target
+for <code>skip_to_main()</code>. The <code>&lt;main&gt;</code> element
+also carries <code>role=&quot;main&quot;</code> and <code>tabindex=&quot;-1&quot;</code>, so
+keyboard focus moves to it when the skip link is activated.</p>
+<hr />
+</div>
+<div id="the-primary-layout-system" class="section level2">
+<h2>The primary layout system</h2>
+<p>Inside <code>gov_main_layout()</code>, content is structured using a
+three-function grid system: <code>gov_row()</code>,
+<code>gov_box()</code>, and optionally <code>gov_text()</code>.</p>
+<pre><code>gov_main_layout()
+└── gov_row()
+    ├── gov_box(size = &quot;two-thirds&quot;)
+    │   └── [your content]
+    └── gov_box(size = &quot;one-third&quot;)
+        └── [your content]</code></pre>
+<div id="gov_row" class="section level3">
+<h3><code>gov_row()</code></h3>
+<p>Creates a GOV.UK grid row. You can have multiple rows inside
+<code>gov_main_layout()</code>, each stacked vertically.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">gov_main_layout</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>  <span class="fu">gov_row</span>(</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>    <span class="co"># columns go here</span></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>  ),</span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>  <span class="fu">gov_row</span>(</span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a>    <span class="co"># another row</span></span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a>  )</span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+<div id="gov_box" class="section level3">
+<h3><code>gov_box()</code></h3>
+<p>Creates a column within a row. The <code>size</code> argument
+controls the column width using GOV.UK Frontend’s grid classes:</p>
+<table>
+<thead>
+<tr class="header">
+<th><code>size</code></th>
+<th>Width</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>&quot;full&quot;</code></td>
+<td>100%</td>
+</tr>
+<tr class="even">
+<td><code>&quot;one-half&quot;</code></td>
+<td>50%</td>
+</tr>
+<tr class="odd">
+<td><code>&quot;two-thirds&quot;</code></td>
+<td>66%</td>
+</tr>
+<tr class="even">
+<td><code>&quot;one-third&quot;</code></td>
+<td>33%</td>
+</tr>
+<tr class="odd">
+<td><code>&quot;three-quarters&quot;</code></td>
+<td>75%</td>
+</tr>
+<tr class="even">
+<td><code>&quot;one-quarter&quot;</code></td>
+<td>25%</td>
+</tr>
+</tbody>
+</table>
+<p>Sizes within a row should add up to a full width. For example,
+<code>&quot;two-thirds&quot;</code> and <code>&quot;one-third&quot;</code> sit side by
+side:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">gov_main_layout</span>(</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>  <span class="fu">gov_row</span>(</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>    <span class="fu">gov_box</span>(</span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>      <span class="at">size =</span> <span class="st">&quot;two-thirds&quot;</span>,</span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>      <span class="fu">heading_text</span>(<span class="st">&quot;Main content&quot;</span>, <span class="at">size =</span> <span class="st">&quot;l&quot;</span>),</span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>      <span class="co"># inputs, text, etc.</span></span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a>    ),</span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a>    <span class="fu">gov_box</span>(</span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a>      <span class="at">size =</span> <span class="st">&quot;one-third&quot;</span>,</span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a>      <span class="fu">heading_text</span>(<span class="st">&quot;Sidebar&quot;</span>, <span class="at">size =</span> <span class="st">&quot;m&quot;</span>),</span>
+<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a>      <span class="co"># supporting content</span></span>
+<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a>    )</span>
+<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a>  )</span>
+<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a>)</span></code></pre></div>
+<p>For a simple single-column layout, use
+<code>size = &quot;full&quot;</code>:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">gov_main_layout</span>(</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>  <span class="fu">gov_row</span>(</span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>    <span class="fu">gov_box</span>(</span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>      <span class="at">size =</span> <span class="st">&quot;full&quot;</span>,</span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a>      <span class="fu">heading_text</span>(<span class="st">&quot;Page title&quot;</span>, <span class="at">size =</span> <span class="st">&quot;l&quot;</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>    )</span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a>  )</span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+<div id="gov_text" class="section level3">
+<h3><code>gov_text()</code></h3>
+<p>A wrapper that produces a <code>&lt;p class=&quot;govuk-body&quot;&gt;</code>
+paragraph element. For full guidance on <code>gov_text()</code> and all
+other text functions, see the <a href="headings-and-text.html">Headings
+and text</a> vignette.</p>
+<hr />
+</div>
+</div>
+<div id="gov_layout-legacy-alternative" class="section level2">
+<h2><code>gov_layout()</code> — legacy alternative</h2>
+<blockquote>
+<p><strong>Warning:</strong> <code>gov_layout()</code> is not
+recommended for new development and may be removed in a future release.
+Use <code>gov_main_layout()</code> with <code>gov_row()</code> and
+<code>gov_box()</code> instead.</p>
+</blockquote>
+<p><code>gov_layout()</code> is a single-function alternative that
+combines a width container and a column in one call:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">gov_layout</span>(</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>  <span class="at">size =</span> <span class="st">&quot;two-thirds&quot;</span>,</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>  <span class="fu">heading_text</span>(<span class="st">&quot;Page title&quot;</span>, <span class="at">size =</span> <span class="st">&quot;l&quot;</span>),</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>  <span class="co"># content</span></span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>)</span></code></pre></div>
+<p>It is well suited to simple, single-column apps where you want a
+width constraint without setting up the full
+<code>gov_main_layout()</code> / <code>gov_row()</code> /
+<code>gov_box()</code> hierarchy.</p>
+<p><strong>As soon as your app needs more than one column, multiple
+rows, or a combination of widths, switch to the full system.</strong>
+Nesting <code>gov_layout()</code> inside <code>gov_main_layout()</code>
+will produce doubled-up width container HTML and cause the content to
+appear visually inset from the page-level components.</p>
+<hr />
+</div>
+<div id="multi-page-dashboards" class="section level2">
+<h2>Multi-page dashboards</h2>
+<p>For apps with multiple sections, use
+<code>service_navigation()</code> in combination with a hidden tab
+panel. The navigation bar renders as a row of links below the header;
+clicking a link fires a Shiny input that you use in your server to
+switch the visible panel.</p>
+<div id="setting-up-navigation-links" class="section level3">
+<h3>Setting up navigation links</h3>
+<p>Pass a named character vector to <code>service_navigation()</code>.
+The names are displayed as link text; the values become the
+inputIDs:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">service_navigation</span>(</span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>  <span class="fu">c</span>(</span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>    <span class="st">&quot;Summary&quot;</span> <span class="ot">=</span> <span class="st">&quot;nav_summary&quot;</span>,</span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>    <span class="st">&quot;Detailed data&quot;</span> <span class="ot">=</span> <span class="st">&quot;nav_detail&quot;</span>,</span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a>    <span class="st">&quot;User guide&quot;</span> <span class="ot">=</span> <span class="st">&quot;nav_guide&quot;</span></span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a>  )</span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a>)</span></code></pre></div>
+<p>If you pass an unnamed vector, inputIDs are auto-generated by
+lowercasing the text and replacing non-alphanumeric characters with
+underscores (e.g. <code>&quot;Detailed data&quot;</code> becomes
+<code>detailed_data</code>).</p>
+</div>
+<div id="wiring-navigation-to-panels" class="section level3">
+<h3>Wiring navigation to panels</h3>
+<p>Use a hidden tab panel for the content area and
+<code>observeEvent()</code> in your server to switch panels when a
+navigation link is clicked. When the user clicks a service navigation
+link, the JavaScript binding updates the active state automatically —
+you only need to switch the panel:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co"># ui.R — shiny tabsetPanel</span></span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">tabsetPanel</span>(</span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;hidden&quot;</span>,</span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">&quot;main_panels&quot;</span>,</span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a>  shiny<span class="sc">::</span><span class="fu">tabPanel</span>(<span class="st">&quot;Summary&quot;</span>,       <span class="at">value =</span> <span class="st">&quot;nav_summary&quot;</span>,  <span class="st">&quot;Content&quot;</span>),</span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a>  shiny<span class="sc">::</span><span class="fu">tabPanel</span>(<span class="st">&quot;Detailed data&quot;</span>, <span class="at">value =</span> <span class="st">&quot;nav_detail&quot;</span>,   <span class="st">&quot;Content&quot;</span>),</span>
+<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a>  shiny<span class="sc">::</span><span class="fu">tabPanel</span>(<span class="st">&quot;User guide&quot;</span>,    <span class="at">value =</span> <span class="st">&quot;nav_guide&quot;</span>,    <span class="st">&quot;Content&quot;</span>)</span>
+<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a>)</span>
+<span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" tabindex="-1"></a><span class="co"># server.R — nav link click: JS handles the active state, just switch the panel</span></span>
+<span id="cb14-11"><a href="#cb14-11" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">observeEvent</span>(input<span class="sc">$</span>nav_summary, {</span>
+<span id="cb14-12"><a href="#cb14-12" tabindex="-1"></a>  shiny<span class="sc">::</span><span class="fu">updateTabsetPanel</span>(session, <span class="st">&quot;main_panels&quot;</span>, <span class="at">selected =</span> <span class="st">&quot;nav_summary&quot;</span>)</span>
+<span id="cb14-13"><a href="#cb14-13" tabindex="-1"></a>})</span></code></pre></div>
+<p>If you prefer bslib tab panels, use
+<code>bslib::navset_hidden()</code> and <code>bslib::nav_select()</code>
+instead:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co"># ui.R — bslib navset_hidden</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>bslib<span class="sc">::</span><span class="fu">navset_hidden</span>(</span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">&quot;main_panels&quot;</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>  bslib<span class="sc">::</span><span class="fu">nav_panel</span>(<span class="st">&quot;Summary&quot;</span>,       <span class="at">value =</span> <span class="st">&quot;nav_summary&quot;</span>,  <span class="st">&quot;Content&quot;</span>),</span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a>  bslib<span class="sc">::</span><span class="fu">nav_panel</span>(<span class="st">&quot;Detailed data&quot;</span>, <span class="at">value =</span> <span class="st">&quot;nav_detail&quot;</span>,   <span class="st">&quot;Content&quot;</span>),</span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a>  bslib<span class="sc">::</span><span class="fu">nav_panel</span>(<span class="st">&quot;User guide&quot;</span>,    <span class="at">value =</span> <span class="st">&quot;nav_guide&quot;</span>,    <span class="st">&quot;Content&quot;</span>)</span>
+<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a>)</span>
+<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a><span class="co"># server.R</span></span>
+<span id="cb15-10"><a href="#cb15-10" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">observeEvent</span>(input<span class="sc">$</span>nav_summary, {</span>
+<span id="cb15-11"><a href="#cb15-11" tabindex="-1"></a>  bslib<span class="sc">::</span><span class="fu">nav_select</span>(<span class="st">&quot;main_panels&quot;</span>, <span class="st">&quot;nav_summary&quot;</span>)</span>
+<span id="cb15-12"><a href="#cb15-12" tabindex="-1"></a>})</span></code></pre></div>
+<p>Repeat the <code>observeEvent</code> block for each navigation
+link.</p>
+<p><code>update_service_navigation()</code> is only needed when
+navigation is triggered <strong>programmatically</strong> — for example,
+via a next / back button — because in that case the nav link itself is
+not clicked and the active state does not update automatically. See
+<code>?update_service_navigation</code> for full details and
+examples.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co"># server.R — programmatic navigation: must update both the panel and the nav</span></span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">observeEvent</span>(input<span class="sc">$</span>next_btn, {</span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a>  shiny<span class="sc">::</span><span class="fu">updateTabsetPanel</span>(session, <span class="st">&quot;main_panels&quot;</span>, <span class="at">selected =</span> <span class="st">&quot;nav_detail&quot;</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a>  shinyGovstyle<span class="sc">::</span><span class="fu">update_service_navigation</span>(session, <span class="st">&quot;nav_detail&quot;</span>)</span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a>})</span></code></pre></div>
+</div>
+<div id="footer-only-pages" class="section level3">
+<h3>Footer-only pages</h3>
+<p>Some pages — such as an accessibility statement, privacy notice, or
+cookies information page — should not appear in the service navigation
+but still need to be reachable. The standard pattern is to add a link in
+<code>footer()</code> and a corresponding hidden tab panel, but to omit
+the link from <code>service_navigation()</code>.</p>
+<p>Because the user navigates to these pages outside of the service
+navigation, there is no active nav item to highlight. You do not need to
+call <code>update_service_navigation()</code> for these transitions.
+However, you should call it when navigating <em>back</em> to a main page
+from a footer-linked page, so the correct nav item becomes active
+again.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="co"># ui.R — footer link, no entry in service_navigation()</span></span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="fu">footer</span>(</span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>  <span class="at">full =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a>  <span class="at">links =</span> <span class="fu">c</span>(<span class="st">`</span><span class="at">Accessibility statement</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;accessibility_footer_link&quot;</span>)</span>
+<span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a>)</span>
+<span id="cb17-6"><a href="#cb17-6" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" tabindex="-1"></a><span class="co"># ui.R — tab panel exists in the hidden tabset but not in service_navigation()</span></span>
+<span id="cb17-8"><a href="#cb17-8" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">tabsetPanel</span>(</span>
+<span id="cb17-9"><a href="#cb17-9" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;hidden&quot;</span>,</span>
+<span id="cb17-10"><a href="#cb17-10" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">&quot;main_panels&quot;</span>,</span>
+<span id="cb17-11"><a href="#cb17-11" tabindex="-1"></a>  shiny<span class="sc">::</span><span class="fu">tabPanel</span>(<span class="st">&quot;Summary&quot;</span>, <span class="at">value =</span> <span class="st">&quot;nav_summary&quot;</span>, <span class="st">&quot;Content&quot;</span>),</span>
+<span id="cb17-12"><a href="#cb17-12" tabindex="-1"></a>  shiny<span class="sc">::</span><span class="fu">tabPanel</span>(<span class="st">&quot;Accessibility statement&quot;</span>, <span class="at">value =</span> <span class="st">&quot;accessibility_panel&quot;</span>,</span>
+<span id="cb17-13"><a href="#cb17-13" tabindex="-1"></a>                  <span class="st">&quot;Content&quot;</span>)</span>
+<span id="cb17-14"><a href="#cb17-14" tabindex="-1"></a>)</span>
+<span id="cb17-15"><a href="#cb17-15" tabindex="-1"></a></span>
+<span id="cb17-16"><a href="#cb17-16" tabindex="-1"></a><span class="co"># server.R — navigate to the footer page (no update_service_navigation needed)</span></span>
+<span id="cb17-17"><a href="#cb17-17" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">observeEvent</span>(input<span class="sc">$</span>accessibility_footer_link, {</span>
+<span id="cb17-18"><a href="#cb17-18" tabindex="-1"></a>  shiny<span class="sc">::</span><span class="fu">updateTabsetPanel</span>(session, <span class="st">&quot;main_panels&quot;</span>,</span>
+<span id="cb17-19"><a href="#cb17-19" tabindex="-1"></a>                           <span class="at">selected =</span> <span class="st">&quot;accessibility_panel&quot;</span>)</span>
+<span id="cb17-20"><a href="#cb17-20" tabindex="-1"></a>})</span></code></pre></div>
+</div>
+<div id="modularising-the-code" class="section level3">
+<h3>Modularising the code</h3>
+<p>Once an app has multiple pages, it is strongly recommended to use
+Shiny modules to keep each page’s UI and server logic self-contained.
+The <code>inst/example_app</code> bundled with this package demonstrates
+this pattern: each page is a module in
+<code>inst/example_app/modules/</code>, with
+<code>mod_&lt;name&gt;_ui()</code> and
+<code>mod_&lt;name&gt;_server()</code> functions called from the
+top-level <code>ui.R</code> and <code>server.R</code>. This keeps
+individual files focused and makes it straightforward to add or remove
+pages without touching the overall app structure.</p>
+<hr />
+</div>
+</div>
+<div id="complete-example" class="section level2">
+<h2>Complete example</h2>
+<p>The following is a minimal but complete multi-page app that uses all
+of the layout components covered in this vignette:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="fu">library</span>(shinyGovstyle)</span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a>ui <span class="ot">&lt;-</span> bslib<span class="sc">::</span><span class="fu">page_fluid</span>(</span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a>  <span class="fu">skip_to_main</span>(),</span>
+<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a>  <span class="fu">header</span>(</span>
+<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a>    <span class="at">org_name =</span> <span class="st">&quot;My department&quot;</span>,</span>
+<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a>    <span class="at">service_name =</span> <span class="st">&quot;My dashboard&quot;</span></span>
+<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a>  ),</span>
+<span id="cb18-10"><a href="#cb18-10" tabindex="-1"></a>  <span class="fu">service_navigation</span>(</span>
+<span id="cb18-11"><a href="#cb18-11" tabindex="-1"></a>    <span class="fu">c</span>(</span>
+<span id="cb18-12"><a href="#cb18-12" tabindex="-1"></a>      <span class="st">&quot;Summary&quot;</span>  <span class="ot">=</span> <span class="st">&quot;nav_summary&quot;</span>,</span>
+<span id="cb18-13"><a href="#cb18-13" tabindex="-1"></a>      <span class="st">&quot;About&quot;</span>    <span class="ot">=</span> <span class="st">&quot;nav_about&quot;</span></span>
+<span id="cb18-14"><a href="#cb18-14" tabindex="-1"></a>    )</span>
+<span id="cb18-15"><a href="#cb18-15" tabindex="-1"></a>  ),</span>
+<span id="cb18-16"><a href="#cb18-16" tabindex="-1"></a>  <span class="fu">banner</span>(</span>
+<span id="cb18-17"><a href="#cb18-17" tabindex="-1"></a>    <span class="at">inputId =</span> <span class="st">&quot;phase&quot;</span>,</span>
+<span id="cb18-18"><a href="#cb18-18" tabindex="-1"></a>    <span class="at">type =</span> <span class="st">&quot;Beta&quot;</span>,</span>
+<span id="cb18-19"><a href="#cb18-19" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">&quot;This is a new service.&quot;</span></span>
+<span id="cb18-20"><a href="#cb18-20" tabindex="-1"></a>  ),</span>
+<span id="cb18-21"><a href="#cb18-21" tabindex="-1"></a></span>
+<span id="cb18-22"><a href="#cb18-22" tabindex="-1"></a>  <span class="fu">gov_main_layout</span>(</span>
+<span id="cb18-23"><a href="#cb18-23" tabindex="-1"></a>    shiny<span class="sc">::</span><span class="fu">tabsetPanel</span>(</span>
+<span id="cb18-24"><a href="#cb18-24" tabindex="-1"></a>      <span class="at">type =</span> <span class="st">&quot;hidden&quot;</span>,</span>
+<span id="cb18-25"><a href="#cb18-25" tabindex="-1"></a>      <span class="at">id =</span> <span class="st">&quot;main_panels&quot;</span>,</span>
+<span id="cb18-26"><a href="#cb18-26" tabindex="-1"></a></span>
+<span id="cb18-27"><a href="#cb18-27" tabindex="-1"></a>      shiny<span class="sc">::</span><span class="fu">tabPanel</span>(</span>
+<span id="cb18-28"><a href="#cb18-28" tabindex="-1"></a>        <span class="st">&quot;Summary&quot;</span>, <span class="at">value =</span> <span class="st">&quot;nav_summary&quot;</span>,</span>
+<span id="cb18-29"><a href="#cb18-29" tabindex="-1"></a>        <span class="fu">gov_row</span>(</span>
+<span id="cb18-30"><a href="#cb18-30" tabindex="-1"></a>          <span class="fu">gov_box</span>(</span>
+<span id="cb18-31"><a href="#cb18-31" tabindex="-1"></a>            <span class="at">size =</span> <span class="st">&quot;two-thirds&quot;</span>,</span>
+<span id="cb18-32"><a href="#cb18-32" tabindex="-1"></a>            <span class="fu">heading_text</span>(<span class="st">&quot;Summary&quot;</span>, <span class="at">size =</span> <span class="st">&quot;l&quot;</span>),</span>
+<span id="cb18-33"><a href="#cb18-33" tabindex="-1"></a>            <span class="fu">gov_text</span>(<span class="st">&quot;Welcome to the summary page.&quot;</span>)</span>
+<span id="cb18-34"><a href="#cb18-34" tabindex="-1"></a>          ),</span>
+<span id="cb18-35"><a href="#cb18-35" tabindex="-1"></a>          <span class="fu">gov_box</span>(</span>
+<span id="cb18-36"><a href="#cb18-36" tabindex="-1"></a>            <span class="at">size =</span> <span class="st">&quot;one-third&quot;</span>,</span>
+<span id="cb18-37"><a href="#cb18-37" tabindex="-1"></a>            <span class="fu">heading_text</span>(<span class="st">&quot;Quick facts&quot;</span>, <span class="at">size =</span> <span class="st">&quot;m&quot;</span>),</span>
+<span id="cb18-38"><a href="#cb18-38" tabindex="-1"></a>            <span class="fu">gov_text</span>(<span class="st">&quot;Supporting information goes here.&quot;</span>)</span>
+<span id="cb18-39"><a href="#cb18-39" tabindex="-1"></a>          )</span>
+<span id="cb18-40"><a href="#cb18-40" tabindex="-1"></a>        )</span>
+<span id="cb18-41"><a href="#cb18-41" tabindex="-1"></a>      ),</span>
+<span id="cb18-42"><a href="#cb18-42" tabindex="-1"></a></span>
+<span id="cb18-43"><a href="#cb18-43" tabindex="-1"></a>      shiny<span class="sc">::</span><span class="fu">tabPanel</span>(</span>
+<span id="cb18-44"><a href="#cb18-44" tabindex="-1"></a>        <span class="st">&quot;About&quot;</span>, <span class="at">value =</span> <span class="st">&quot;nav_about&quot;</span>,</span>
+<span id="cb18-45"><a href="#cb18-45" tabindex="-1"></a>        <span class="fu">gov_row</span>(</span>
+<span id="cb18-46"><a href="#cb18-46" tabindex="-1"></a>          <span class="fu">gov_box</span>(</span>
+<span id="cb18-47"><a href="#cb18-47" tabindex="-1"></a>            <span class="at">size =</span> <span class="st">&quot;full&quot;</span>,</span>
+<span id="cb18-48"><a href="#cb18-48" tabindex="-1"></a>            <span class="fu">heading_text</span>(<span class="st">&quot;About this dashboard&quot;</span>, <span class="at">size =</span> <span class="st">&quot;l&quot;</span>),</span>
+<span id="cb18-49"><a href="#cb18-49" tabindex="-1"></a>            <span class="fu">gov_text</span>(<span class="st">&quot;This page describes the dashboard.&quot;</span>)</span>
+<span id="cb18-50"><a href="#cb18-50" tabindex="-1"></a>          )</span>
+<span id="cb18-51"><a href="#cb18-51" tabindex="-1"></a>        )</span>
+<span id="cb18-52"><a href="#cb18-52" tabindex="-1"></a>      ),</span>
+<span id="cb18-53"><a href="#cb18-53" tabindex="-1"></a></span>
+<span id="cb18-54"><a href="#cb18-54" tabindex="-1"></a>      shiny<span class="sc">::</span><span class="fu">tabPanel</span>(</span>
+<span id="cb18-55"><a href="#cb18-55" tabindex="-1"></a>        <span class="st">&quot;Accessibility statement&quot;</span>, <span class="at">value =</span> <span class="st">&quot;accessibility_panel&quot;</span>,</span>
+<span id="cb18-56"><a href="#cb18-56" tabindex="-1"></a>        <span class="fu">gov_row</span>(</span>
+<span id="cb18-57"><a href="#cb18-57" tabindex="-1"></a>          <span class="fu">gov_box</span>(</span>
+<span id="cb18-58"><a href="#cb18-58" tabindex="-1"></a>            <span class="at">size =</span> <span class="st">&quot;full&quot;</span>,</span>
+<span id="cb18-59"><a href="#cb18-59" tabindex="-1"></a>            <span class="fu">heading_text</span>(<span class="st">&quot;Accessibility statement&quot;</span>, <span class="at">size =</span> <span class="st">&quot;l&quot;</span>),</span>
+<span id="cb18-60"><a href="#cb18-60" tabindex="-1"></a>            <span class="fu">gov_text</span>(<span class="st">&quot;This page describes the accessibility of the dashboard.&quot;</span>)</span>
+<span id="cb18-61"><a href="#cb18-61" tabindex="-1"></a>          )</span>
+<span id="cb18-62"><a href="#cb18-62" tabindex="-1"></a>        )</span>
+<span id="cb18-63"><a href="#cb18-63" tabindex="-1"></a>      )</span>
+<span id="cb18-64"><a href="#cb18-64" tabindex="-1"></a>    )</span>
+<span id="cb18-65"><a href="#cb18-65" tabindex="-1"></a>  ),</span>
+<span id="cb18-66"><a href="#cb18-66" tabindex="-1"></a></span>
+<span id="cb18-67"><a href="#cb18-67" tabindex="-1"></a>  <span class="fu">footer</span>(</span>
+<span id="cb18-68"><a href="#cb18-68" tabindex="-1"></a>    <span class="at">links =</span> <span class="fu">c</span>(<span class="st">`</span><span class="at">Accessibility statement</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;accessibility_footer_link&quot;</span>)</span>
+<span id="cb18-69"><a href="#cb18-69" tabindex="-1"></a>  )</span>
+<span id="cb18-70"><a href="#cb18-70" tabindex="-1"></a>)</span>
+<span id="cb18-71"><a href="#cb18-71" tabindex="-1"></a></span>
+<span id="cb18-72"><a href="#cb18-72" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb18-73"><a href="#cb18-73" tabindex="-1"></a>  shiny<span class="sc">::</span><span class="fu">observeEvent</span>(input<span class="sc">$</span>nav_summary, {</span>
+<span id="cb18-74"><a href="#cb18-74" tabindex="-1"></a>    shiny<span class="sc">::</span><span class="fu">updateTabsetPanel</span>(session, <span class="st">&quot;main_panels&quot;</span>, <span class="at">selected =</span> <span class="st">&quot;nav_summary&quot;</span>)</span>
+<span id="cb18-75"><a href="#cb18-75" tabindex="-1"></a>  })</span>
+<span id="cb18-76"><a href="#cb18-76" tabindex="-1"></a>  shiny<span class="sc">::</span><span class="fu">observeEvent</span>(input<span class="sc">$</span>nav_about, {</span>
+<span id="cb18-77"><a href="#cb18-77" tabindex="-1"></a>    shiny<span class="sc">::</span><span class="fu">updateTabsetPanel</span>(session, <span class="st">&quot;main_panels&quot;</span>, <span class="at">selected =</span> <span class="st">&quot;nav_about&quot;</span>)</span>
+<span id="cb18-78"><a href="#cb18-78" tabindex="-1"></a>  })</span>
+<span id="cb18-79"><a href="#cb18-79" tabindex="-1"></a>  shiny<span class="sc">::</span><span class="fu">observeEvent</span>(input<span class="sc">$</span>accessibility_footer_link, {</span>
+<span id="cb18-80"><a href="#cb18-80" tabindex="-1"></a>    shiny<span class="sc">::</span><span class="fu">updateTabsetPanel</span>(session, <span class="st">&quot;main_panels&quot;</span>,</span>
+<span id="cb18-81"><a href="#cb18-81" tabindex="-1"></a>                             <span class="at">selected =</span> <span class="st">&quot;accessibility_panel&quot;</span>)</span>
+<span id="cb18-82"><a href="#cb18-82" tabindex="-1"></a>  })</span>
+<span id="cb18-83"><a href="#cb18-83" tabindex="-1"></a>}</span>
+<span id="cb18-84"><a href="#cb18-84" tabindex="-1"></a></span>
+<span id="cb18-85"><a href="#cb18-85" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
